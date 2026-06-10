@@ -1,182 +1,124 @@
-# 🚲 Cyclist Traffic ML Project
+# Cyclist Traffic ML Project
 
 [![codecov](https://codecov.io/gh/zheddhe/mai25-bds-trafic-cycliste/graph/badge.svg?token=6TLD3FM08Z)](https://codecov.io/gh/zheddhe/mai25-bds-trafic-cycliste)
 [![CI Main](https://github.com/zheddhe/mai25-bds-trafic-cycliste/actions/workflows/ci_main.yml/badge.svg)](https://github.com/zheddhe/mai25-bds-trafic-cycliste/actions)
 [![CI Branch](https://github.com/zheddhe/mai25-bds-trafic-cycliste/actions/workflows/ci_branch.yml/badge.svg)](https://github.com/zheddhe/mai25-bds-trafic-cycliste/actions)
 
-> A machine  learning pipeline for analyzing bike traffic data in Paris.  
-> Developed as part of the April 2025 Machine Learning Engineering (MLE) full training program.
+A machine learning project focused on the analysis and prediction of cyclist traffic patterns in Paris.
+
+Developed as part of the Machine Learning Engineering (MLE) training program, combining Data Product Management, Data Science and MLOps practices.
 
 ---
 
-## 🧭 Overview
+## Overview
 
-This project implements a full machine learning and MLOps pipeline in three main stages:
+This project implements a complete machine learning workflow covering:
 
-### 1. 📐 Data Product Management
+### Data Product Management
 
-- Define business goals
-- Scope the data lifecycle
+- Business problem framing
+- Data lifecycle definition
+- Analytical objective specification
 
-### 2. 📊 Data Science
+### Data Science
 
-- Data analysis and visualization
+- Data preparation and cleaning
+- Exploratory Data Analysis (EDA)
+- Feature engineering
 - Model development and evaluation
-- Advanced preprocessing helpers and strategies
+- Hyperparameter optimization
 
-### 3. ⚙️ MLOps
+### MLOps
 
-- Code packaging and automation
-- Reproducibility and continuous testing
+- Project packaging
+- Automated testing
+- Continuous Integration
+- Reproducibility practices
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
-``` text
+```text
 mai25-bds-trafic-cycliste/
-├── app/                    # Streamlit app
-│   ├── main.py             # main entry point of the app
-│   ├── config.py
-│   ├── assets/             # all static resources for the app (images...)
-│   │   └── ...
-│   ├── utils/
-│   │   ├── model_logic.py
-│   │   └── streamlit_helpers.py
-│   └── sections/
-│       ├── home.py
-│       ├── project_presentation.py
-│       ├── data_exploration.py
-│       ├── data_visualization.py
-│       └── modeling.py
-├── smartcheck/             # Project Core logic
-│   ├── logger_config.py                    # Log management tools
-│   ├── paths.py                            # Path management tools
-│   ├── dataframe_common.py                 # Shared data loading tools
-│   ├── dataframe_project_specific.py       # Advanced project specific feature engineering tools
-│   ├── preprocessing_project_specific.py   # Advanced project specific transformers
-│   ├── modeling_project_specific.py        # Advanced project specific modeling tools
-│   ├── deep_learning_project_specific.py   # Advanced project specific deep learning tools
-│   └── resources/
-│       └── config.yaml                     # Configuration resources (reusable google file paths)
-├── tests/                  # Unit tests (pytest for core and app)
-├── notebooks/              # Jupyter notebooks (not packaged)
-├── README.md               # Project documentation
-├── LICENSE                 # MIT license
-├── MANIFEST.in             # Packaging resources configuration for setuptools
-├── pyproject.toml          # Python project configuration
-├── noxfile.py              # NOX session configuration
-├── .pre-commit-config.yaml # Pre-commit configuration (clean jupyter notebooks before commit)
-└── .coveragerc             # Test coverage configuration
+├── app/                    # Streamlit application
+├── smartcheck/             # Core project logic
+├── tests/                  # Automated tests
+├── notebooks/              # Exploratory notebooks
+├── README.md
+├── LICENSE
+├── pyproject.toml
+├── noxfile.py
+└── .pre-commit-config.yaml
 ```
 
 ---
 
-## ⚙️ Installation
+## Technical Stack
 
-### 🔧 Initial Setup (One-time)
+### Data Science
 
-```bash
-# Create virtual environment using NOX and Conda
-conda activate base
-pip install --upgrade pip
-pip install nox
-```
+- Python
+- Pandas
+- NumPy
+- Scikit-Learn
+- XGBoost
+- Statsmodels
 
-> ⚠️ At this point, `nox`, `pre-commit`, and `nbstripout` are not yet available. Install the project (next section) before activating hooks.
+### Data Visualization
 
----
+- Matplotlib
+- Seaborn
+- Plotly
+- GeoPandas
 
-### 🚀 Day-to-day Usage
+### Application Development
 
-```bash
-# Rebuild and complete virtual env for standard streamlit application and notebooks with pytorch (+ trigger test/flake8)
-nox -s build-3.12 --reuse-existing
+- Streamlit
 
-# Activate the conda env listed via:
-conda env list
-conda activate [env_path]
+### Software Engineering & MLOps
 
-# Optional: clean (project generated file only)
-nox -s clean_project
-
-# Optional: clean everything (/!\ including virtual environment generated with conda/nox)
-nox -s clean_all
-
-# Optional: trigger packaging construction
-nox -s package
-```
+- Git
+- GitHub Actions
+- Pytest
+- Codecov
+- Nox
+- Pre-commit
 
 ---
 
-### 🪝 Activate Commit Hooks (after environment is built)
+## Streamlit Application
 
-```bash
-# Activate pre-commit hooks (mandatory)
-pre-commit install
+The project includes an interactive Streamlit application allowing:
 
-# (Optional) Activate strip out of files when stagging
-nbstripout --install
+- Statistical data exploration
+- Interactive visualizations
+- Model evaluation
+- Project presentation
+- Analytical result inspection
 
-# (optional Deactivate strip out of files when stagging
-nbstripout --uninstall
-```
-
----
-
-## 🚀 Streamlit App (Interactive Demo)
-
-The project includes a full **Streamlit web application** located in `app/`.  
-This interactive app allows for data exploration, visualization, and model result inspection.
-
-### ▶️ Launch the app
+Launch locally:
 
 ```bash
 streamlit run app/main.py
 ```
 
-You can navigate between pages from the sidebar:
+---
 
-- 🏠 Présentation de l'application
-- ⚙️ Démarche projet et résultats
-- 🔍 Exploration statistique **intéractive** des données
-- 📈 Visualisations **intéractives** des données
-- 🧪 Laboratoire **intéractif** de modélisation
+## Testing and Continuous Integration
+
+Testing is implemented using Pytest and includes:
+
+- Unit tests
+- Application smoke tests
+- Core module validation
+
+Continuous Integration is managed through GitHub Actions and Codecov to ensure code quality and reproducibility.
 
 ---
 
-## 📓 Notebooks
+## Contributors
 
-The `notebooks/` folder contains various exploratory notebooks (school and project related), showcasing:
-
-- 🧼 Data cleaning and preprocessing strategies  
-- 📊 Exploratory Data Analysis with Matplotlib, Plotly, Seaborn  
-- 🎯 Resampling methods and hyperparameter tuning (GridSearch, RandomizedSearch, BayesSearch)  
-- 🧠 Training and evaluation of baseline and advanced ML models  
-- 🤖 Neural network experimentation with tensorflow and pytorch  
-
-All notebooks leverage reusable functions from the `smartcheck` module.
-
----
-
-## 🧪 Testing and Continuous Integration
-
-Tests are executed using `pytest`, including:
-
-- ✅ Smoke tests and logic mocks for the Streamlit app  
-- ✅ Unit tests for core reusable modules (`smartcheck/`)  
-
-CI workflows are handled by GitHub Actions:
-
-- `ci_main.yml`: runs on every push to the `main` branch  
-- `ci_branch.yml`: runs on all feature and non-main branches  
-
-📈 Code coverage results are automatically uploaded to [Codecov](https://codecov.io/gh/zheddhe/mai25-bds-trafic-cycliste) after tests on the `main` branch.
-
----
-
-## 👥 Contributors
-
-- Rémy Canal – [@remy.canal](mailto:remy.canal@live.fr)  
+- Rémy Canal – [@remy.canal](mailto:remy.canal@live.fr)
 - Elias Djouadi – [@elias.djouadi](mailto:elias.djouadi@gmail.com)
-- Raphaël Parmentier
+- Raphaël Parmentier – [@pro.raphael.parmentier](mailto:pro.raphael.parmentier@gmail.com)
